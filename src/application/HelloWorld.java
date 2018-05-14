@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
-public class HelloWorld extends Application implements EventHandler<ActionEvent> {
+public class HelloWorld extends Application/* implements EventHandler<ActionEvent>*/ {
 	
 	Button button; //button, button2, and label aren't important
 	Button button2;
@@ -36,13 +36,19 @@ public class HelloWorld extends Application implements EventHandler<ActionEvent>
 		
 		button = new Button();
 		button.setText("Click");
-		button.setOnAction(this);
+		button.setOnAction( e -> {
+			System.out.println("Button1 clicked");
+			label.setText("Degrees Celcius: \u2103");
+		});
 		
 		label = new Label("Test successful");
 		
 		button2 = new Button();
 		button2.setText("Click");
-		button2.setOnAction(this);
+		button2.setOnAction( e -> {
+			System.out.println("Button2 clicked");
+			label.setText("Copyright: \u00a9");
+		});
 		
 		testFlow = new TextFlow();
 		
@@ -50,28 +56,40 @@ public class HelloWorld extends Application implements EventHandler<ActionEvent>
 		button3.setText("Image Check");
 		button3.setOnAction( e -> {
 			Text text = new Text();
+			Text imageName = new Text();
 			int tempRand = r.nextInt(8);
 			ImageView imageView;
-			if(tempRand==0)
+			if(tempRand==0) {
 				imageView = new ImageView("GompPrep.png");
-			else if (tempRand==1)
+				imageName.setText("Gompers Prep");
+			}
+			else if (tempRand==1) {
 				imageView = new ImageView("HooverHS.jpg");
-			else if (tempRand==2)
+				imageName.setText("Hoover High");
+			}
+			else if (tempRand==2) {
 				imageView = new ImageView("LEAGUE.png");
-			else if (tempRand==3)
+				imageName.setText("Carmel Valley");
+			}
+			else if (tempRand==3) {
 				imageView = new ImageView("MalcomX.png");
-			else if (tempRand==4)
+				imageName.setText("Malcom X Library");}
+			else if (tempRand==4) {
 				imageView = new ImageView("SanElijoMS.png");
-			else if (tempRand==5)
+				imageName.setText("San Elijo Middle");}
+			else if (tempRand==5) {
 				imageView = new ImageView("SanMarcosMS.png");
-			else if (tempRand==6)
+				imageName.setText("San Marcos Middle");}
+			else if (tempRand==6) {
 				imageView = new ImageView("SDCentral.jpg");
-			else
+				imageName.setText("SD Central Library");}
+			else {
 				imageView = new ImageView("WilsonMS.jpg");
+				imageName.setText("Wilson Middle");}
 			imageView.setPreserveRatio(true);
 			imageView.setFitHeight(15);
 			text.setText("\nButton: ");
-			testFlow.getChildren().addAll(text, imageView);
+			testFlow.getChildren().addAll(text, imageView, imageName);
 		});
 		
 		//StackPane layout = new StackPane();
@@ -84,21 +102,14 @@ public class HelloWorld extends Application implements EventHandler<ActionEvent>
 		
 		Scene scene = new Scene(layout, 500, 300);
 		
-		primaryStage.setTitle("Title of window");
+		primaryStage.setTitle("Hello. Is it me you're looking for?");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}//end start method
 		
-	@Override
+	/*@Override
 	public void handle(ActionEvent event) {
-		if(event.getSource()==button) {
-			System.out.println("Button1 clicked");
-			label.setText("Copyright: \u00a9");
-		}
-		else if (event.getSource()==button2) {
-			System.out.println("Button2 clicked");
-			label.setText("Degrees Celcius: \u2103");
-		}
-	}
+		
+	}*/
 	
 }
