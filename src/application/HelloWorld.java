@@ -101,6 +101,7 @@ public class HelloWorld extends Application/* implements EventHandler<ActionEven
 		layout.getChildren().add(testFlow);
 		
 		Scene scene = new Scene(layout, 500, 300);
+		scene.getStylesheets().add("application.css");
 		
 		primaryStage.setTitle("Hello. Is it me you're looking for?");
 		primaryStage.setScene(scene);
